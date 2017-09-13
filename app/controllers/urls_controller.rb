@@ -10,7 +10,7 @@ class UrlsController < ApplicationController
 	def create
 		@url = Url.new(url_params)
 		@url.short
-		
+
 		if @url.save
 			redirect_to @url
 		else
@@ -21,6 +21,12 @@ class UrlsController < ApplicationController
 	def show
 	
 		@url = Url.find(params[:id])
+	end
+
+	def destroy
+		@url = Url.find(params[:id])
+		@url.destroy
+		redirect_to urls_path
 	end
 
 	def url_params
